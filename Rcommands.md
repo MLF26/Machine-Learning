@@ -1,12 +1,12 @@
-##R commands for Machine Learning (to be continued...)
+#R commands for Machine Learning (to be continued...)
 
-#Data collection
+##Data collection
 
 - setwd("~/Centrale/Machine Learning/Bike")
 - train <- read.csv("train.csv")
 
 
-#First approach
+##First approach
 
 - str(train)
 - summary(train)
@@ -14,7 +14,7 @@
 - names(train) : to get the features
 
 
-#Data visualization
+##Data visualization
 
 - library(Amelia) missmap(train, main="Train set - Missings Map", col=c("red", "black"), legend=FALSE) : map of missing values
 - hist(train$Age, main = "Age", xlab = NULL, col = "black") : histogram, for continuous numeric values
@@ -23,26 +23,26 @@
 - boxplot(train$Age ~ train$Survived, main="Effect of Age", xlab="Survived", ylab="Age") : effect of an explicative continuous variable on the discrete response 
 
 
-#Missing value
+##Missing value
 
 - library(Amelia) missmap(train, main="Train set - Missings Map", col=c("red", "black"), legend=FALSE) : map of missing values
 - library(Hmisc) train$Age <- with(train, impute(Age, median))
 
 
-#Data preparation
+##Data preparation
 
 - tot <- rbind(train, test)
 - tot$season <- factor(tot$season)
 - tot$time <- sapply(tot$datetime, function(x){substr(x,12,13)})
 
 
-#Aggregation
+##Aggregation
 
 - aggregate(tot[,10:12], by=list(tot$day), FUN=mean)
 - library(Hmisc) bystats(train$Age, train$Title,  fun=function(x)c(Mean=mean(x),Median=median(x)))
 
 
-#Commands for char 
+##Commands for char 
 
 - substr()
 - strsplit
@@ -50,7 +50,7 @@
 - substr()
 
 
-#Subsetting 
+##Subsetting 
 
 - which(train$Survive == 1)
 - is.na(train$Age)
@@ -58,7 +58,7 @@
 - subset(train, Fare <7, select = c(Pclass,Sex,Age,TTitle))
 
 
-#Calculus 
+##Calculus 
 
 - median(train$Age, na.rm = TRUE))
 - mean()
