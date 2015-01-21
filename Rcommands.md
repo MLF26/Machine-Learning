@@ -21,6 +21,7 @@
 - barplot(table(train$Sex), main = "Sex", col = "black") : for discrete values
 - library(vcd) mosaicplot(train$Pclass ~ train$Survived, main="Effect of Pclass", shade=FALSE, color=TRUE, xlab="Pclass", ylab="Survived") : effect of an explicative discrete variable on the discrete response
 - boxplot(train$Age ~ train$Survived, main="Effect of Age", xlab="Survived", ylab="Age") : effect of an explicative continuous variable on the discrete response 
+- pairs(data) : plot variables against each other
 
 
 ##Missing value
@@ -63,6 +64,13 @@
 - median(train$Age, na.rm = TRUE))
 - mean()
 
+##Random forests
+
+- library(randomForest)
+- set.seed(6)  
+- casualRel = casual ~ holiday + workingday + weather + temp + atemp + humidity + windspeed + hour + weekday + year
+- casualRf <- randomForest(casualRel,	data=train,	ntree=10,	mtry=5,	importance=TRUE)	
+- varImpPlot(casualRf)
 
 
 
